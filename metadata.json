@@ -1,0 +1,6 @@
+{
+  "name": "NSMods Dialogs Pro",
+  "description": "An advanced, professional dialog generator and utilities suite for modders, enabling real-time layout creation, Smali/DEX compilation, string pool inspectable downloads, online updater config, and security lock integrations.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

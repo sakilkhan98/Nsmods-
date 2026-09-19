@@ -86,18 +86,42 @@ export default function App() {
   };
 
   // Immediate reactive Kill Switch listener:
-  // If admin turns off the app (isAppLocked === true), all active non-admin sessions instantly exit to the lock screen!
+  // If admin turns off/locks the app (isAppLocked === true), all active non-admin sessions instantly exit to the home lock screen!
   useEffect(() => {
-    const unsub = subscribeAdminSettings((settings) => {
-      setAdminSettings(settings);
-      if (!isAdmin && settings.isAppLocked && isUnlocked) {
+    const evaluateKillSwitch = (currentSettings: AdminSettings) => {
+      setAdminSettings(currentSettings);
+      if (!isAdmin && currentSettings.isAppLocked && isUnlocked) {
         setIsUnlocked(false);
         setActiveTab('home');
         setShowFileExplorer(false);
         setShowAdminModal(false);
       }
+    };
+
+    // 1. Cross-tab & local custom event subscription
+    const unsub = subscribeAdminSettings((settings) => {
+      evaluateKillSwitch(settings);
     });
-    return unsub;
+
+    // 2. High-frequency 1-second pulse check for maximum responsiveness across any frame/tab
+    const intervalId = setInterval(() => {
+      evaluateKillSwitch(getAdminSettings());
+    }, 1000);
+
+    // 3. Focus & tab-switch re-verification
+    const handleFocusOrVisible = () => {
+      evaluateKillSwitch(getAdminSettings());
+    };
+
+    window.addEventListener('focus', handleFocusOrVisible);
+    document.addEventListener('visibilitychange', handleFocusOrVisible);
+
+    return () => {
+      unsub();
+      clearInterval(intervalId);
+      window.removeEventListener('focus', handleFocusOrVisible);
+      document.removeEventListener('visibilitychange', handleFocusOrVisible);
+    };
   }, [isAdmin, isUnlocked]);
   
   // File Explorer view state
@@ -438,7 +462,7 @@ export default function App() {
               }`}
             >
               <ArrowLeft className="w-4 h-4" />
-              <span>ড্যাশবোর্ড</span>
+              <span>Dashboard</span>
             </button>
           )}
           <div className={`p-1.5 rounded-lg border ${
@@ -493,7 +517,7 @@ export default function App() {
                   : 'text-slate-400'
               }`}
             >
-              সম্পাদনা
+              Editor
             </button>
             <button
               onClick={() => setMobilePane('preview')}
@@ -503,7 +527,7 @@ export default function App() {
                   : 'text-slate-400'
               }`}
             >
-              প্রিভিউ
+              Preview
             </button>
           </div>
         )}
@@ -513,10 +537,10 @@ export default function App() {
             <button
               onClick={() => setShowAdminModal(true)}
               className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-black cursor-pointer hover:bg-emerald-500 hover:text-slate-950 transition shadow-sm"
-              title="এডমিন কন্ট্রোল (পাসওয়ার্ড পরিবর্তন ও অ্যাপ বন্ধের সেটিংস)"
+              title="Admin Controls (Password & Kill-Switch Settings)"
             >
               <Sliders className="w-3 h-3" />
-              <span>👑 এডমিন কন্ট্রোল</span>
+              <span>👑 Admin Controls</span>
             </button>
           )}
           <span className={`hidden sm:inline-block text-[10px] font-mono py-1 px-2.5 rounded-full font-semibold border ${
@@ -527,10 +551,10 @@ export default function App() {
           <button
             onClick={handleLogout}
             className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/15 text-rose-300 hover:bg-rose-500 hover:text-white border border-rose-500/30 text-[10px] font-bold cursor-pointer transition shadow-sm"
-            title="অ্যাপ থেকে লগআউট করুন"
+            title="Sign out of application"
           >
             <LogOut className="w-3 h-3" />
-            <span>{isAdmin ? 'এডমিন লগআউট' : 'লগআউট'}</span>
+            <span>{isAdmin ? 'Admin Sign Out' : 'Sign Out'}</span>
           </button>
         </div>
       </div>
@@ -611,7 +635,7 @@ export default function App() {
                              activeTab === 'custom-dialog-v3' ? "Dialog V3 Configuration" :
                              "Apk Editor Popout V4 Configuration"}
                           </h2>
-                          <p className="text-[11px] text-slate-500">কালার, টেক্সট, ব্যাকগ্রাউন্ড ও ফন্ট ফাইল কাস্টমাইজ করুন।</p>
+                          <p className="text-[11px] text-slate-500">Customize dialog colors, typography, background, and font assets.</p>
                         </div>
                         
                         {/* Quick Presets */}
@@ -1225,9 +1249,9 @@ export default function App() {
                       <div className="w-full flex items-center justify-between pb-3 border-b border-slate-800">
                         <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
                           <Eye className="w-4 h-4 text-indigo-400" />
-                          রিয়েল-টাইম প্রিভিউ
+                          Live Interactive Preview
                         </h3>
-                        <span className="text-[10px] font-mono text-slate-500">স্কেল: অটো ফিট</span>
+                        <span className="text-[10px] font-mono text-slate-500">Scale: Auto Fit</span>
                       </div>
 
                       {/* Device preview frame with active configuration */}
@@ -1244,9 +1268,9 @@ export default function App() {
                       </div>
 
                       <div className="w-full p-4 bg-slate-950 border border-slate-850 rounded-2xl space-y-1 text-slate-400 text-xs font-light">
-                        <span className="font-semibold text-white block">মেট্রিক্স পর্যবেক্ষণ:</span>
-                        <p>• টাইটেল ফন্ট: {config.titleSize}sp • ব্যাকগ্রাউন্ড: {config.dialogBgColor}</p>
-                        <p>• ট্রিগার ফাইল: <span className="font-mono text-indigo-400">dialog_title.ttf</span>, <span className="font-mono text-indigo-400">dialog_msg.ttf</span></p>
+                        <span className="font-semibold text-white block">Configuration Metrics:</span>
+                        <p>• Title Font: {config.titleSize}sp • Background: {config.dialogBgColor}</p>
+                        <p>• Font Assets: <span className="font-mono text-indigo-400">dialog_title.ttf</span>, <span className="font-mono text-indigo-400">dialog_msg.ttf</span></p>
                       </div>
                     </div>
 
@@ -1263,7 +1287,7 @@ export default function App() {
                           <Cloud className="w-5 h-5 text-indigo-400" />
                           Simple Online Dialog Creator
                         </h2>
-                        <p className="text-xs text-slate-400 mt-1">সিডিএন, ফায়ারবেস বা গিটহাব পেজে হোস্ট করার উপযোগী রিমোট ডায়ালগ কনফিগারেশন ফাইল জেনারেট করুন।</p>
+                        <p className="text-xs text-slate-400 mt-1">Generate remote dialog configuration files suitable for hosting on CDN, Firebase, or GitHub Pages.</p>
                       </div>
 
                       <form onSubmit={handleGenerate} className="space-y-4 relative">
@@ -1312,7 +1336,7 @@ export default function App() {
                           <Cloud className="w-5 h-5 text-indigo-400" />
                           Online Update Dialog V1 Creator
                         </h2>
-                        <p className="text-xs text-slate-400 mt-1">রিমোট আপডেট কনফিগার করুন। টেলিগ্রাম বা গুগল প্লে থেকে সরাসরি সিকিউরিটি আপডেট ডাউনলোডে বাধ্য করুন।</p>
+                        <p className="text-xs text-slate-400 mt-1">Configure remote updates. Force security updates directly from Telegram or Google Play.</p>
                       </div>
 
                       <form onSubmit={handleGenerate} className="space-y-5 relative">
@@ -1385,7 +1409,7 @@ export default function App() {
                           <Cloud className="w-5 h-5 text-indigo-400" />
                           Online Welcome Dialogue V2 Creator
                         </h2>
-                        <p className="text-xs text-slate-400 mt-1">অনলাইন ওয়েলকাম ডায়ালগ কনফিগার করুন। কাস্টম ক্রেডিট লাইন, টেলিগ্রাম লিংক এবং মড-অথর রেফারেন্স প্রদর্শন করুন।</p>
+                        <p className="text-xs text-slate-400 mt-1">Configure online welcome dialogs. Display custom credits, Telegram channel links, and author references.</p>
                       </div>
 
                       <form onSubmit={handleGenerate} className="space-y-5 relative">
@@ -1459,7 +1483,7 @@ export default function App() {
                             <Sparkles className="w-5 h-5 text-indigo-400" />
                             Floating Window Pro Creator
                           </h2>
-                          <p className="text-[11px] text-slate-500 mt-1">ইন্টারেক্টিভ ফ্লোটিং মড মেনু উইন্ডো কাস্টমাইজ করুন।</p>
+                          <p className="text-[11px] text-slate-500 mt-1">Customize interactive floating mod menu window and features.</p>
                         </div>
                       </div>
 
@@ -1624,7 +1648,7 @@ export default function App() {
 
                           {/* Direct Icon Click Link */}
                           <div className="space-y-1.5">
-                            <label className="text-xs font-semibold text-slate-400">Icon Direct Redirect URL (ট্যাপ করলে সরাসরি ওপেন হবে)</label>
+                            <label className="text-xs font-semibold text-slate-400">Direct Redirect URL (Opens immediately on tap)</label>
                             <input 
                               type="text" 
                               value={floatingConfig.directLink}
@@ -1636,7 +1660,7 @@ export default function App() {
 
                           {/* Ludo Link */}
                           <div className="space-y-1.5">
-                            <label className="text-xs font-semibold text-slate-400">Ludo Game Website Link (লুডু গেম সাইট)</label>
+                            <label className="text-xs font-semibold text-slate-400">Game / Website Link</label>
                             <input 
                               type="text" 
                               value={floatingConfig.ludoLink}
@@ -1648,7 +1672,7 @@ export default function App() {
 
                           {/* Mic Voice Link */}
                           <div className="space-y-1.5">
-                            <label className="text-xs font-semibold text-slate-400">Mic / Voice Chat Link (ভয়েস চ্যাট রুম)</label>
+                            <label className="text-xs font-semibold text-slate-400">Voice Chat / Discord Link</label>
                             <input 
                               type="text" 
                               value={floatingConfig.voiceLink}
@@ -1660,7 +1684,7 @@ export default function App() {
 
                           {/* Telegram Link */}
                           <div className="space-y-1.5">
-                            <label className="text-xs font-semibold text-slate-400">Telegram Channel Link (টেলিগ্রাম চ্যানেল)</label>
+                            <label className="text-xs font-semibold text-slate-400">Telegram Channel Link</label>
                             <input 
                               type="text" 
                               value={floatingConfig.telegramLink}
@@ -1765,9 +1789,9 @@ export default function App() {
                       <div className="w-full flex items-center justify-between pb-3 border-b border-slate-800">
                         <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
                           <Eye className="w-4 h-4 text-indigo-400" />
-                          রিয়েল-টাইম ইন্টারেক্টিভ প্রিভিউ
+                          Live Interactive Preview
                         </h3>
-                        <span className="text-[10px] font-mono text-slate-500">স্কেল: অটো ফিট</span>
+                        <span className="text-[10px] font-mono text-slate-500">Scale: Auto Fit</span>
                       </div>
 
                       {/* Device preview frame with active configuration */}
@@ -1780,9 +1804,9 @@ export default function App() {
                       </div>
 
                       <div className="w-full p-4 bg-slate-950 border border-slate-850 rounded-2xl space-y-1.5 text-slate-400 text-xs font-light">
-                        <span className="font-semibold text-white block">ইন্টারেক্টিভ নির্দেশনা:</span>
-                        <p>👉 **বাবল আইকনটি ড্র্যাগ করে** স্ক্রিনের যেকোনো স্থানে পজিশন পরীক্ষা করুন।</p>
-                        <p>👉 **বাবল আইকনটিতে ক্লিক করুন** ফ্লোটিং মড উইন্ডো ওপেন করতে, এবং ফিচার সুইচগুলো অন/অফ করতে টগল করুন!</p>
+                        <span className="font-semibold text-white block">Interactive Controls:</span>
+                        <p>👉 **Drag the bubble icon** anywhere on screen to test custom positioning.</p>
+                        <p>👉 **Click the bubble icon** to open the floating mod menu, and toggle features on/off!</p>
                       </div>
                     </div>
 
@@ -1840,7 +1864,7 @@ export default function App() {
 
                       {/* Bio text */}
                       <p className="text-slate-300 text-sm max-w-lg mx-auto leading-relaxed font-light">
-                        আসসালামু আলাইকুম! আমি নাইম, NSMods-এর প্রতিষ্ঠাতা এবং প্রধাণ ডেভেলপার। আমি অ্যান্ড্রয়েড রিভার্স-ইঞ্জিনিয়ারিং, বাইটকোড ম্যানিপুলেশন (Smali & DEX) এবং প্রিমিয়াম অ্যান্ড্রয়েড ডায়ালগ ইউজার ইন্টারফেস তৈরিতে বিশেষজ্ঞ। সকল টুলস এবং কোড স্নিপেটসমূহ অত্যন্ত নিখুঁতভাবে তৈরি করা হয়েছে।
+                        Hello! I am Naim, founder and lead developer at NSMods. I specialize in Android reverse-engineering, bytecode manipulation (Smali & DEX), and crafting premium Android dialog user interfaces. All tools and code snippets are meticulously optimized for mobile modding workflows.
                       </p>
 
                       {/* Developer Skills Grid */}

@@ -363,7 +363,7 @@ export function TutorialsHub() {
           </span>
           <div>
             <h3 className="text-base font-bold text-white">
-              MT Manager Injection Guide (এমটি ম্যানেজার ইনজেকশন গাইড)
+              MT Manager Injection Guide
             </h3>
             <p className="text-[11px] text-slate-500 mt-0.5">
               Follow this step-by-step master guide to add your dialog/floating window to any APK.
@@ -373,7 +373,7 @@ export function TutorialsHub() {
       </div>
 
       {/* Steps Navigation Tabs */}
-      <div className="grid grid-cols-4 bg-slate-950 p-1 border border-slate-850 rounded-2xl gap-1">
+      <div className="grid grid-cols-4 bg-slate-950 p-1 border border-slate-855 rounded-2xl gap-1">
         <button
           type="button"
           onClick={() => setActiveStepTab('dex')}
@@ -418,23 +418,23 @@ export function TutorialsHub() {
           <div className="space-y-3.5">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400" />
-              <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">Step 1: classes.dex Inject & Merge (ডেক্স ফাইল যুক্ত করা)</h4>
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">Step 1: classes.dex Inject & Merge</h4>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed font-light">
-              ডাউনলোডকৃত ZIP ফাইল থেকে পাওয়া <span className="text-indigo-400 font-mono">classes.dex</span> ফাইলটিকে আপনার টার্গেট APK-তে যুক্ত করতে হবে:
+              Add the generated <span className="text-indigo-400 font-mono">classes.dex</span> file from your downloaded ZIP into your target APK:
             </p>
             <ul className="space-y-2 text-[11px] text-slate-400 list-disc pl-5 font-light">
               <li>
-                <strong className="text-slate-200">MT Manager</strong> দিয়ে আপনার টার্গেট APK-টি সিলেক্ট করে <strong className="text-indigo-400">"View"</strong> মোডে ওপেন করুন।
+                In <strong className="text-slate-200">MT Manager</strong>, select your target APK and open it in <strong className="text-indigo-400">"View"</strong> mode.
               </li>
               <li>
-                টার্গেট APK এর ভেতরে থাকা সর্বোচ্চ নাম্বারের ডেক্স ফাইলটি খুঁজুন (যেমন: <span className="text-indigo-400 font-mono">classes3.dex</span> থাকলে আপনার নতুন ডেক্স ফাইলের নাম পরিবর্তন করে <span className="text-emerald-400 font-mono">classes4.dex</span> করুন)।
+                Check the highest numbered DEX file in the target APK (for example: if <span className="text-indigo-400 font-mono">classes3.dex</span> exists, rename the new DEX to <span className="text-emerald-400 font-mono">classes4.dex</span>).
               </li>
               <li>
-                আমাদের জেনারেট করা ডেক্স ফাইলটি APK এর রুট ডিরেক্টরিতে অ্যাড (Add) করে দিন।
+                Add the renamed DEX file directly into the APK root directory.
               </li>
               <li>
-                অথবা, <strong className="text-slate-200">Dex Editor Plus</strong> ওপেন করে আমাদের জেনারেট করা Smali ফোল্ডারটি (<span className="text-emerald-400 font-mono">com/nsmods/dialog</span>) সরাসরি আপনার ডেক্সে ইম্পোর্ট করে মার্জ করুন।
+                Alternatively, open <strong className="text-slate-200">Dex Editor Plus</strong> and import the generated Smali folder (<span className="text-emerald-400 font-mono">com/nsmods/dialog</span>) directly into your DEX and merge.
               </li>
             </ul>
           </div>
@@ -444,23 +444,23 @@ export function TutorialsHub() {
           <div className="space-y-3.5">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400" />
-              <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">Step 2: Hook onCreate Method (স্মালি ফাইলে হুক বসানো)</h4>
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">Step 2: Hook onCreate Method</h4>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed font-light">
-              অ্যাপ চালু হওয়ার সাথে সাথে ডায়ালগটি শো করানোর জন্য প্রধান অ্যাক্টিভিটির onCreate মেথডে হুক কোড যুক্ত করুন:
+              To launch the dialog on app start, inject the hook code into your main activity's onCreate method:
             </p>
             <ul className="space-y-2 text-[11px] text-slate-400 list-disc pl-5 font-light">
               <li>
-                প্রথমে <span className="text-indigo-400 font-mono">AndroidManifest.xml</span> ফাইলটি ওপেন করে আপনার অ্যাপের লঞ্চার অ্যাক্টিভিটি (Splash / Main Activity) এর নাম খুঁজে বের করুন।
+                Open <span className="text-indigo-400 font-mono">AndroidManifest.xml</span> to identify your launcher activity (Splash / Main Activity).
               </li>
               <li>
-                অ্যাক্টিভিটির নামের Smali ফাইলটি খুঁজুন (যেমন: <span className="text-emerald-400 font-mono">SplashActivity.smali</span>) এবং সেটি এডিটর মোডে খুলুন।
+                Find the corresponding Smali file (e.g. <span className="text-emerald-400 font-mono">SplashActivity.smali</span>) and open it in the editor.
               </li>
               <li>
-                ফাইলের ভেতরে <span className="text-indigo-400 font-mono">.method public onCreate(Landroid/os/Bundle;)V</span> লিখে সার্চ করুন।
+                Search for <span className="text-indigo-400 font-mono">.method public onCreate(Landroid/os/Bundle;)V</span>.
               </li>
               <li>
-                মেথডের ভেতরে প্রথম লাইনে অথবা মেথড শেষ হওয়ার ঠিক আগে নিচের হুক কোডটি পেস্ট করে দিন:
+                Paste the hook code at the beginning of the method body or right before return-void:
               </li>
             </ul>
             <pre className="p-3 bg-slate-950 border border-slate-850 rounded-xl text-[10px] font-mono text-indigo-400 overflow-x-auto whitespace-pre">
@@ -477,24 +477,24 @@ invoke-static {p0}, Lcom/nsmods/dialog/floatingmenu;->showMenu(Landroid/content/
           <div className="space-y-3.5">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400" />
-              <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">Step 3: Assets & Font Placement (ফন্ট ও লোগো সেটআপ)</h4>
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">Step 3: Assets & Font Placement</h4>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed font-light">
-              ডায়ালগ বা ফ্লোটিং উইন্ডোর ব্যাকগ্রাউন্ড ইমেজ, কাস্টম লোগো এবং স্টাইলিশ ফন্টগুলি যাতে সঠিকভাবে কাজ করে তার জন্য এসেটস ফোল্ডার সেটআপ করুন:
+              Set up the assets folder to ensure custom fonts, icons, and background visuals render correctly:
             </p>
             <ul className="space-y-2 text-[11px] text-slate-400 list-disc pl-5 font-light">
               <li>
-                ডাউনলোডকৃত ZIP ফাইলের <strong className="text-indigo-400">assets</strong> ফোল্ডার থেকে প্রাপ্ত ফাইলগুলো কপি করুন।
+                Copy the files from the <strong className="text-indigo-400">assets</strong> folder of the downloaded ZIP archive.
               </li>
               <li>
-                আপনার APK এর ভেতরে থাকা <strong className="text-indigo-400">assets</strong> ফোল্ডারে পেস্ট করে দিন।
+                Paste them into your target APK's <strong className="text-indigo-400">assets</strong> directory.
               </li>
               <li>
-                ফাইলগুলোর নাম অবশ্যই নিচের ডিজাইনের সাথে মিল থাকতে হবে:
+                Ensure file names match the expected asset naming convention:
                 <ul className="pl-4 mt-1 space-y-1 list-circle text-slate-400">
-                  <li><span className="text-emerald-400 font-mono">dialog_title.ttf</span> - টাইটেল ফন্ট</li>
-                  <li><span className="text-emerald-400 font-mono">dialog_msg.ttf</span> - ডেসক্রিপশন ফন্ট</li>
-                  <li><span className="text-emerald-400 font-mono">floating_icon.png</span> - ফ্লোটিং বাবলের লোগো</li>
+                  <li><span className="text-emerald-400 font-mono">dialog_title.ttf</span> - Title font</li>
+                  <li><span className="text-emerald-400 font-mono">dialog_msg.ttf</span> - Description font</li>
+                  <li><span className="text-emerald-400 font-mono">floating_icon.png</span> - Floating button icon</li>
                 </ul>
               </li>
             </ul>
@@ -505,23 +505,23 @@ invoke-static {p0}, Lcom/nsmods/dialog/floatingmenu;->showMenu(Landroid/content/
           <div className="space-y-3.5">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400" />
-              <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">Step 4: Update Server setup (অনলাইন JSON হোস্টিং)</h4>
+              <h4 className="text-xs font-bold text-white uppercase tracking-wider font-mono">Step 4: Update Server Setup</h4>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed font-light">
-              রিমোট বা অনলাইন আপডেট ডায়ালগ পরিচালনা করতে হলে জেনারেট করা JSON ফাইলটি লাইভ হোস্টিং সার্ভারে আপলোড করতে হবে:
+              To control remote or online updates dynamically, upload the generated JSON configuration to a live hosting URL:
             </p>
             <ul className="space-y-2 text-[11px] text-slate-400 list-disc pl-5 font-light">
               <li>
-                আমাদের লাইভ JSON প্যানেল বা ডাউনলোড করা ZIP থেকে <strong className="text-indigo-400">update.json</strong> ফাইলটি কপি করুন।
+                Copy the <strong className="text-indigo-400">update.json</strong> file from the studio or downloaded ZIP.
               </li>
               <li>
-                ফাইলটি কোনো পাবলিক হোস্টিং সার্ভিস যেমন: <strong className="text-slate-200">GitHub Pages, Pastebin, Rawgithack</strong> অথবা আপনার নিজস্ব হোস্টিং সার্ভারে আপলোড করুন।
+                Upload it to a public hosting service such as <strong className="text-slate-200">GitHub Pages, Pastebin, or your own server</strong>.
               </li>
               <li>
-                আপলোড সম্পন্ন হওয়ার পর ফাইলটির <strong className="text-emerald-400">Raw URL</strong> লিঙ্কটি সংগ্রহ করুন।
+                Obtain the <strong className="text-emerald-400">Raw URL</strong> of the hosted JSON file.
               </li>
               <li>
-                আপনার কোড বা ডেক্স ফাইলে যেখানে রিমোট লিঙ্ক চাওয়া হয়েছে, সেখানে এই <strong className="text-indigo-400">Raw JSON Link</strong> বসিয়ে দিন। এখন আপনি যেকোনো সময় JSON ফাইলটি এডিট করে দূর থেকেই আপনার ইউজারের অ্যাপে নোটিফিকেশন/আপডেট এলার্ট দিতে পারবেন!
+                Place this <strong className="text-indigo-400">Raw JSON Link</strong> into your DEX or Smali code where the remote configuration link is referenced. You can now remotely push notifications and updates anytime!
               </li>
             </ul>
           </div>

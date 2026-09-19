@@ -5,29 +5,34 @@
 
 export interface AdminSettings {
   userPassword: string;
+  adminPassword: string;
   isAppLocked: boolean;
   maintenanceMessage: string;
 }
 
 const STORAGE_KEYS = {
   USER_PASS: 'nsmods_user_password',
+  ADMIN_PASS: 'nsmods_admin_password',
   APP_LOCKED: 'nsmods_app_locked_state',
   MAINTENANCE_MSG: 'nsmods_maintenance_message'
 };
 
 const DEFAULT_SETTINGS: AdminSettings = {
   userPassword: 'nsmods',
+  adminPassword: 'admin',
   isAppLocked: false,
-  maintenanceMessage: 'অ্যাপটি এডমিন কর্তৃক সাময়িকভাবে বন্ধ বা রক্ষণাবেক্ষণে রাখা হয়েছে। শীঘ্রই আবার চালু করা হবে।'
+  maintenanceMessage: 'The application is currently locked for maintenance by the administrator. Please check back shortly.'
 };
 
 export const getAdminSettings = (): AdminSettings => {
   try {
     const pass = localStorage.getItem(STORAGE_KEYS.USER_PASS) || DEFAULT_SETTINGS.userPassword;
+    const adminPass = localStorage.getItem(STORAGE_KEYS.ADMIN_PASS) || DEFAULT_SETTINGS.adminPassword;
     const locked = localStorage.getItem(STORAGE_KEYS.APP_LOCKED) === 'true';
     const msg = localStorage.getItem(STORAGE_KEYS.MAINTENANCE_MSG) || DEFAULT_SETTINGS.maintenanceMessage;
     return {
       userPassword: pass,
+      adminPassword: adminPass,
       isAppLocked: locked,
       maintenanceMessage: msg
     };
@@ -102,6 +107,9 @@ export const saveAdminSettings = (settings: Partial<AdminSettings>): AdminSettin
     if (settings.userPassword !== undefined) {
       localStorage.setItem(STORAGE_KEYS.USER_PASS, settings.userPassword.trim());
     }
+    if (settings.adminPassword !== undefined) {
+      localStorage.setItem(STORAGE_KEYS.ADMIN_PASS, settings.adminPassword.trim());
+    }
     if (settings.isAppLocked !== undefined) {
       localStorage.setItem(STORAGE_KEYS.APP_LOCKED, settings.isAppLocked ? 'true' : 'false');
     }
@@ -119,6 +127,7 @@ export const saveAdminSettings = (settings: Partial<AdminSettings>): AdminSettin
 export const resetAdminSettings = (): AdminSettings => {
   try {
     localStorage.removeItem(STORAGE_KEYS.USER_PASS);
+    localStorage.removeItem(STORAGE_KEYS.ADMIN_PASS);
     localStorage.removeItem(STORAGE_KEYS.APP_LOCKED);
     localStorage.removeItem(STORAGE_KEYS.MAINTENANCE_MSG);
   } catch (err) {

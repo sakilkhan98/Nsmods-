@@ -38,7 +38,7 @@ interface SidebarProps {
 export default function Sidebar({ activeTab, onTabChange, isOpen, onClose, isAdmin, onLogout }: SidebarProps) {
   const menuGroups = [
     {
-      title: "৫-টি স্পেশাল ডায়ালগ স্টুডিও",
+      title: "5 Custom Dialog Studios",
       items: [
         { id: "dialog-v1-ios", label: "Dialog V1 (iOS Classic)", icon: Sparkles, badge: "iOS" },
         { id: "dialog-v2-picture", label: "Dialog V2 (Picture Banner)", icon: Flame, badge: "Media" },
@@ -48,16 +48,16 @@ export default function Sidebar({ activeTab, onTabChange, isOpen, onClose, isAdm
       ]
     },
     {
-      title: "ইনজেকশন ও টিউটোরিয়াল",
+      title: "Integration & Guides",
       items: [
         { id: "tutorials", label: "MT Manager Classes.dex Guide", icon: PlayCircle, badge: "DEX" },
       ]
     },
     {
-      title: "অ্যাপ সেটিংস ও তথ্য",
+      title: "Settings & Information",
       items: [
-        { id: "update-check", label: "Check for update", icon: RefreshCw, action: true },
-        { id: "terms", label: "Terms Of Use", icon: FileText },
+        { id: "update-check", label: "Check for Updates", icon: RefreshCw, action: true },
+        { id: "terms", label: "Terms of Use", icon: FileText },
         { id: "about", label: "About Developer", icon: Info },
         { id: "telegram", label: "Join Telegram", icon: Send, action: true },
       ]
@@ -158,7 +158,7 @@ export default function Sidebar({ activeTab, onTabChange, isOpen, onClose, isAdm
             className="w-full flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/25 text-xs font-bold transition cursor-pointer active:scale-95"
           >
             <LogOut className="w-3.5 h-3.5" />
-            <span>{isAdmin ? '👑 এডমিন লগআউট (Logout)' : 'অ্যাপ থেকে লগআউট (Logout)'}</span>
+            <span>{isAdmin ? '👑 Admin Sign Out' : 'Sign Out'}</span>
           </button>
         </div>
       )}

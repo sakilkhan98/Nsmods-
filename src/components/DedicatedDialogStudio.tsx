@@ -212,7 +212,7 @@ export default function DedicatedDialogStudio({
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-750 text-slate-200 border border-slate-700 text-xs font-bold cursor-pointer transition"
           >
             <ArrowLeft className="w-4 h-4" />
-            <span>ড্যাশবোর্ড</span>
+            <span>Dashboard</span>
           </button>
           
           <div className="flex items-center gap-2">
@@ -236,35 +236,35 @@ export default function DedicatedDialogStudio({
             <button
               onClick={onOpenAdminModal}
               className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs font-bold border border-emerald-400/40 cursor-pointer transition shadow"
-              title="এডমিন কন্ট্রোল (পাসওয়ার্ড ও লক)"
+              title="Admin Controls (Password & Kill-Switch)"
             >
               <Sliders className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">এডমিন কন্ট্রোল</span>
+              <span className="hidden sm:inline">Admin Controls</span>
             </button>
           )}
           <button
             onClick={onOpenExplorer}
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700 text-xs font-semibold cursor-pointer transition"
-            title="classes.dex ফাইল ভিউ করুন"
+            title="View classes.dex files"
           >
             <FolderArchive className="w-3.5 h-3.5" />
-            <span className="hidden md:inline">Classes.dex ফাইল</span>
+            <span className="hidden md:inline">Classes.dex Files</span>
           </button>
           <button
             onClick={onGenerateZip}
             className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-md cursor-pointer transition active:scale-95"
           >
             <Download className="w-3.5 h-3.5" />
-            <span>DEX ZIP ডাউনলোড</span>
+            <span>Download DEX ZIP</span>
           </button>
           {onLogout && (
             <button
               onClick={onLogout}
               className="flex items-center gap-1 px-2.5 py-1.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/20 text-xs font-bold transition cursor-pointer"
-              title="লগআউট করুন"
+              title="Sign Out"
             >
               <LogOut className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">লগআউট</span>
+              <span className="hidden sm:inline">Sign Out</span>
             </button>
           )}
         </div>
@@ -425,13 +425,13 @@ export default function DedicatedDialogStudio({
                   animate={{ opacity: 1, scale: 1 }}
                   className="bg-slate-900 border border-slate-800 rounded-3xl p-6 text-center space-y-4 shadow-xl"
                 >
-                  <p className="text-xs text-slate-400">ডায়ালগটি বন্ধ করা হয়েছে (Negative Action Triggered)</p>
+                  <p className="text-xs text-slate-400">Dialog dismissed (Negative Action Triggered)</p>
                   <button
                     onClick={() => setDialogOpen(true)}
                     className="flex items-center justify-center gap-2 mx-auto bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-3 px-5 rounded-2xl text-xs cursor-pointer shadow-lg transition active:scale-95"
                   >
                     <RotateCcw className="w-4 h-4" />
-                    <span>ডায়ালগ প্রিভিউ পুনরায় খুলুন</span>
+                    <span>Reopen Dialog Preview</span>
                   </button>
                 </motion.div>
               )}
@@ -458,7 +458,7 @@ export default function DedicatedDialogStudio({
               }`}
             >
               <Sliders className="w-3.5 h-3.5" />
-              <span>টেক্সট ও কন্টেন্ট</span>
+              <span>Text & Content</span>
             </button>
 
             <button
@@ -468,7 +468,7 @@ export default function DedicatedDialogStudio({
               }`}
             >
               <FontIcon className="w-3.5 h-3.5" />
-              <span>ফন্ট ও স্টাইল</span>
+              <span>Font & Style</span>
             </button>
 
             <button
@@ -478,7 +478,7 @@ export default function DedicatedDialogStudio({
               }`}
             >
               <Palette className="w-3.5 h-3.5" />
-              <span>কালার ও থিম</span>
+              <span>Color & Theme</span>
             </button>
 
             <button
@@ -502,7 +502,7 @@ export default function DedicatedDialogStudio({
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-bold text-white flex items-center gap-1.5">
                       <ImageIcon className="w-4 h-4 text-emerald-400" />
-                      <span>পিকচার ব্যানার কনফিগারেশন (Header Image)</span>
+                      <span>Picture Banner Configuration (Header Image)</span>
                     </span>
                     <button
                       type="button"
@@ -510,7 +510,7 @@ export default function DedicatedDialogStudio({
                       className="bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-bold px-3 py-1.5 rounded-xl cursor-pointer flex items-center gap-1"
                     >
                       <Upload className="w-3 h-3" />
-                      <span>ফাইল আপলোড</span>
+                      <span>Upload File</span>
                     </button>
                     <input 
                       ref={fileInputRef} 
@@ -525,13 +525,13 @@ export default function DedicatedDialogStudio({
                     type="text" 
                     value={config.bannerImageUrl || ''}
                     onChange={(e) => setConfig({ ...config, bannerImageUrl: e.target.value })}
-                    placeholder="অথবা ইমেজের ওয়েব লিঙ্ক পেস্ট করুন..."
+                    placeholder="Or paste web image link..."
                     className="w-full bg-slate-900 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-indigo-500"
                   />
 
                   {/* Preset Wallpapers */}
                   <div className="space-y-1.5 pt-1">
-                    <span className="text-[10px] text-slate-400 font-medium">কুইক ওয়ালপেপার সিলেক্ট করুন:</span>
+                    <span className="text-[10px] text-slate-400 font-medium">Quick Wallpaper Presets:</span>
                     <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
                       {PICTURE_PRESETS.map((item, idx) => (
                         <button
@@ -552,9 +552,9 @@ export default function DedicatedDialogStudio({
 
               {/* Title input */}
               <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-slate-300">Enter Dialog Title (টাইটেল)</label>
+                <label className="text-xs font-semibold text-slate-300">Enter Dialog Title</label>
                 <input 
-                  type="text"
+                  type="text" 
                   value={config.title}
                   onChange={(e) => setConfig({ ...config, title: e.target.value })}
                   className="w-full bg-slate-950 border border-slate-800 rounded-2xl px-4 py-3 text-sm text-white outline-none focus:border-indigo-500"
@@ -564,7 +564,7 @@ export default function DedicatedDialogStudio({
 
               {/* Message input */}
               <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-slate-300">Enter Dialog Message (মেসেজ)</label>
+                <label className="text-xs font-semibold text-slate-300">Enter Dialog Message</label>
                 <textarea 
                   rows={3}
                   value={config.message}
@@ -579,7 +579,7 @@ export default function DedicatedDialogStudio({
                 <div className="space-y-1.5">
                   <label className="text-xs font-semibold text-slate-300">Negative Button Text</label>
                   <input 
-                    type="text"
+                    type="text" 
                     value={config.negativeText}
                     onChange={(e) => setConfig({ ...config, negativeText: e.target.value })}
                     className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-indigo-500"
@@ -590,7 +590,7 @@ export default function DedicatedDialogStudio({
                 <div className="space-y-1.5">
                   <label className="text-xs font-semibold text-slate-300">Positive Button Text</label>
                   <input 
-                    type="text"
+                    type="text" 
                     value={config.positiveText}
                     onChange={(e) => setConfig({ ...config, positiveText: e.target.value })}
                     className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white outline-none focus:border-indigo-500"
@@ -601,9 +601,9 @@ export default function DedicatedDialogStudio({
 
               {/* Positive Button Link */}
               <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-slate-300">Positive Button URL (টেলিগ্রাম / রিডাইরেক্ট লিঙ্ক)</label>
+                <label className="text-xs font-semibold text-slate-300">Positive Button URL (Telegram / Redirect Link)</label>
                 <input 
-                  type="text"
+                  type="text" 
                   value={config.positiveBtnLink}
                   onChange={(e) => setConfig({ ...config, positiveBtnLink: e.target.value })}
                   className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs font-mono text-cyan-400 outline-none focus:border-indigo-500"
@@ -614,14 +614,14 @@ export default function DedicatedDialogStudio({
             </div>
           )}
 
-          {/* TAB 2: FONTS & TYPOGRAPHY ("ভিতরে যত রকমের ফন্ট চেঞ্জ চেঞ্জ আছে সব রকম আছে ওইসব কিছু ওখানে চেঞ্জ করতে হবে") */}
+          {/* TAB 2: FONTS & TYPOGRAPHY */}
           {activePane === 'fonts' && (
             <div className="space-y-5">
               
               {/* Font Family Selection */}
               <div className="space-y-2">
                 <label className="text-xs font-bold text-white flex items-center justify-between">
-                  <span>ফন্ট ফ্যামিলি সিলেক্ট করুন (Font Family)</span>
+                  <span>Select Font Family</span>
                   <span className="text-[10px] font-mono text-indigo-400">{config.fontFamily || 'SF Pro (Apple)'}</span>
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
@@ -682,7 +682,7 @@ export default function DedicatedDialogStudio({
 
               {/* Text Alignment */}
               <div className="space-y-1.5 pt-2 border-t border-slate-800">
-                <label className="text-xs font-semibold text-slate-300">টেক্সট অ্যালাইনমেন্ট (Text Alignment)</label>
+                <label className="text-xs font-semibold text-slate-300">Text Alignment</label>
                 <div className="grid grid-cols-2 gap-2">
                   <button
                     type="button"
@@ -691,7 +691,7 @@ export default function DedicatedDialogStudio({
                       config.textAlign !== 'left' ? 'bg-indigo-600 text-white border-indigo-500' : 'bg-slate-950 text-slate-400 border-slate-800'
                     }`}
                   >
-                    Center (মাঝখানে)
+                    Center
                   </button>
                   <button
                     type="button"
@@ -700,7 +700,7 @@ export default function DedicatedDialogStudio({
                       config.textAlign === 'left' ? 'bg-indigo-600 text-white border-indigo-500' : 'bg-slate-950 text-slate-400 border-slate-800'
                     }`}
                   >
-                    Left (বামে)
+                    Left
                   </button>
                 </div>
               </div>
@@ -737,7 +737,7 @@ export default function DedicatedDialogStudio({
               
               {/* Preset Palettes */}
               <div className="space-y-2">
-                <label className="text-xs font-bold text-white">কুইক কালার প্যালেট (Color Presets)</label>
+                <label className="text-xs font-bold text-white">Color Presets</label>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   <button
                     type="button"
@@ -905,7 +905,7 @@ export default function DedicatedDialogStudio({
             </div>
           )}
 
-          {/* TAB 4: CLASSES.DEX SMALI CODE ("আর পারলে এই স্মলি ফাইলটা যাতে ক্লাসেস ডেক্সের ভেতরে থাকে ওইটা করে দাও") */}
+          {/* TAB 4: CLASSES.DEX SMALI CODE */}
           {activePane === 'smali' && (
             <div className="space-y-4">
               
@@ -914,7 +914,7 @@ export default function DedicatedDialogStudio({
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
                     <FileCode className="w-4 h-4" />
-                    <span>Classes.dex লোকেশন এবং ইনজেকশন পয়েন্ট</span>
+                    <span>Classes.dex Location and Injection Point</span>
                   </span>
                   <span className="text-[10px] font-mono bg-emerald-950 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500/30">
                     MT MANAGER READY
@@ -928,13 +928,13 @@ export default function DedicatedDialogStudio({
               {/* 1-Click onCreate Hook Code */}
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between text-xs font-semibold text-slate-300">
-                  <span>MainActivity.smali -&gt; onCreate মেথড কল:</span>
+                  <span>MainActivity.smali -&gt; onCreate Method Hook:</span>
                   <button
                     onClick={handleCopyHook}
                     className="flex items-center gap-1 text-emerald-400 hover:text-emerald-300 text-[11px] font-bold cursor-pointer"
                   >
                     {copiedHook ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                    <span>{copiedHook ? 'কপি হয়েছে!' : 'হুক কপি করুন'}</span>
+                    <span>{copiedHook ? 'Copied!' : 'Copy Hook'}</span>
                   </button>
                 </div>
                 <div className="bg-slate-950 p-3 rounded-xl border border-slate-800 text-xs font-mono text-cyan-300 select-all">
@@ -945,13 +945,13 @@ export default function DedicatedDialogStudio({
               {/* Complete Smali Code Window */}
               <div className="space-y-1.5">
                 <div className="flex items-center justify-between text-xs font-semibold text-slate-300">
-                  <span>সম্পূর্ণ Smali কোড ({smaliClassName}.smali):</span>
+                  <span>Complete Smali Code ({smaliClassName}.smali):</span>
                   <button
                     onClick={handleCopySmali}
                     className="flex items-center gap-1 bg-emerald-600 hover:bg-emerald-500 text-white text-[11px] font-bold px-3 py-1 rounded-lg cursor-pointer"
                   >
                     {copiedSmali ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                    <span>{copiedSmali ? 'স্মলি কপি হয়েছে!' : 'সব স্মলি কপি করুন'}</span>
+                    <span>{copiedSmali ? 'Copied!' : 'Copy All Smali'}</span>
                   </button>
                 </div>
                 <div className="bg-slate-950 p-4 rounded-2xl border border-slate-800 text-xs font-mono text-slate-300 max-h-72 overflow-y-auto whitespace-pre leading-relaxed select-all">
@@ -963,13 +963,13 @@ export default function DedicatedDialogStudio({
               <div className="bg-slate-950/80 border border-slate-800 rounded-2xl p-4 text-xs space-y-2 text-slate-400">
                 <h5 className="font-bold text-white flex items-center gap-1.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
-                  <span>MT Manager-এ কিভাবে classes.dex এ যুক্ত করবেন:</span>
+                  <span>How to inject into classes.dex using MT Manager:</span>
                 </h5>
                 <ol className="list-decimal list-inside space-y-1 leading-relaxed">
-                  <li>MT Manager দিয়ে APK ওপেন করুন এবং <code className="text-cyan-300">classes.dex</code> এ ট্যাপ করুন।</li>
-                  <li><b className="text-white">Dex Editor Plus</b> সিলেক্ট করুন।</li>
-                  <li>প্যাকেজ ডিরেক্টরি <code className="text-cyan-300">com/nsmods/dialog/</code> এ গিয়ে <code className="text-emerald-300">{smaliClassName}.smali</code> নামে ফাইল তৈরি করে কোডটি পেস্ট করুন।</li>
-                  <li><code className="text-cyan-300">MainActivity.smali</code> এর onCreate মেথডে হুক লাইনটি পেস্ট করে সেভ ও কম্পাইল করুন!</li>
+                  <li>Open the APK in MT Manager and tap on <code className="text-cyan-300">classes.dex</code>.</li>
+                  <li>Select <b className="text-white">Dex Editor Plus</b>.</li>
+                  <li>Navigate to package directory <code className="text-cyan-300">com/nsmods/dialog/</code>, create a file named <code className="text-emerald-300">{smaliClassName}.smali</code>, and paste the Smali code.</li>
+                  <li>In <code className="text-cyan-300">MainActivity.smali</code>, locate the <code className="text-indigo-300">onCreate</code> method, paste the 1-line hook, save, and recompile!</li>
                 </ol>
               </div>
 

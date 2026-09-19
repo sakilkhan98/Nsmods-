@@ -942,7 +942,7 @@ export default function SleekDialogEditor({
                 <X className="w-7 h-7 stroke-[2.5]" />
               </div>
               <h4 className="text-xs font-black uppercase tracking-wider text-rose-300">Dialog Closed State 🔴</h4>
-              <p className="text-[10px] text-slate-400 mt-1 mb-4 leading-relaxed">ডায়ালগটি বর্তমানে বন্ধ আছে। পুনরায় খুলতে নিচের বাটনটি চাপুন।</p>
+              <p className="text-[10px] text-slate-400 mt-1 mb-4 leading-relaxed">The dialog is currently closed. Click the button below to re-open.</p>
               <button
                 type="button"
                 onClick={() => {
@@ -967,7 +967,7 @@ export default function SleekDialogEditor({
         className="w-full max-w-[420px] mb-2 py-3.5 px-4 bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-xl hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 border border-indigo-400/30 cursor-pointer"
       >
         <Code2 className="w-4 h-4 text-pink-300" />
-        <span>📱 HOW TO ATTACH TO YOUR APP (অ্যাপে কীভাবে যুক্ত করবেন)</span>
+        <span>📱 HOW TO ATTACH TO YOUR APP (INTEGRATION GUIDE)</span>
         <span className="py-0.5 px-1.5 bg-white/20 rounded text-[9px] font-mono">GUIDE + CODE</span>
       </button>
 
@@ -1025,7 +1025,7 @@ export default function SleekDialogEditor({
                   .JSON File
                 </span>
               </h3>
-              <p className="text-[10px] text-slate-400 mt-0.5">আপনার ডায়ালগ কনফিগারেশন .json ফাইল হিসেবে এক্সপোর্ট বা ইম্পোর্ট করুন</p>
+              <p className="text-[10px] text-slate-400 mt-0.5">Export or import your dialog configuration as a .json file</p>
             </div>
           </div>
         </div>
@@ -1072,7 +1072,7 @@ export default function SleekDialogEditor({
                   {isPresetCatalogOpen ? "28 PRESETS" : "EXPAND"}
                 </span>
               </h3>
-              <p className="text-[10px] text-slate-400 mt-0.5">১-ক্লিকে Dialog Types, iOS & Android 15 Style লোড করুন</p>
+              <p className="text-[10px] text-slate-400 mt-0.5">1-Click load Dialog Types, iOS & Android 15 Styles</p>
             </div>
           </div>
           <span className="text-xs font-bold text-emerald-400 hover:text-white transition-colors">
@@ -1281,7 +1281,7 @@ export default function SleekDialogEditor({
                   {isAnimationLabOpen ? "OPENED" : "COLLAPSED"}
                 </span>
               </h3>
-              <p className="text-[10px] text-slate-400 mt-0.5">ট্যাবটি খুলে ডায়ালগ এনিমেশন স্পীড কাস্টমাইজ করুন</p>
+              <p className="text-[10px] text-slate-400 mt-0.5">Expand this tab to customize dialog animation speed</p>
             </div>
           </div>
           <span className="text-xs font-bold text-indigo-400 hover:text-white transition-colors">
@@ -1423,14 +1423,14 @@ export default function SleekDialogEditor({
               Dialog Open/Close & Lighting Lab
               <span className="text-[9px] py-0.5 px-1.5 bg-emerald-500/20 text-emerald-300 font-semibold font-mono rounded-full uppercase tracking-tight">Pro V5.2</span>
             </h3>
-            <p className="text-[10px] text-slate-400 mt-0.5">ডায়ালগ ওপেন/ক্লোজ স্টেট এবং কাস্টম সাইড কালার কনফিগার করুন</p>
+            <p className="text-[10px] text-slate-400 mt-0.5">Configure dialog open/close state and custom accent colors</p>
           </div>
         </div>
 
         {/* 1. OPEN / CLOSE TOGGLE BUTTON */}
         <div className="space-y-2 pt-4">
           <label className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider flex items-center justify-between">
-            <span>Open/Close Dialog Control (ওপেন/ক্লোজ স্টেট)</span>
+            <span>Open/Close Dialog Control</span>
             <span className={`text-[10px] font-mono px-2 py-0.5 rounded-md ${config.dialogStateOpen !== false ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' : 'bg-rose-500/20 text-rose-400 border border-rose-500/30'}`}>
               {config.dialogStateOpen !== false ? 'STATE: OPEN 🟢' : 'STATE: CLOSED 🔴'}
             </span>
@@ -1466,7 +1466,7 @@ export default function SleekDialogEditor({
         {/* 2. MESSAGE SIDE ACCENT COLOR SELECTOR */}
         <div className="space-y-2 pt-4 border-t border-slate-800/60 mt-4">
           <label className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider flex items-center justify-between">
-            <span>Message Side Accent Color (সাইড বর্ডার কালার)</span>
+            <span>Message Side Accent Color</span>
           </label>
           <div className="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none">
             {[
@@ -1569,7 +1569,7 @@ export default function SleekDialogEditor({
                 Floating Window & Trigger Button Lab
                 <span className="text-[9px] py-0.5 px-1.5 bg-cyan-500/20 text-cyan-300 font-semibold font-mono rounded-full uppercase">NEW V5.5</span>
               </h3>
-              <p className="text-[10px] text-slate-400 mt-0.5">ফ্লোটিং বাটন উইজেট এবং ট্রিগার ওভারলে কনফিগার করুন</p>
+              <p className="text-[10px] text-slate-400 mt-0.5">Configure floating button widget and trigger overlay</p>
             </div>
           </div>
         </div>
@@ -1577,7 +1577,7 @@ export default function SleekDialogEditor({
         {/* 1. ENABLE / DISABLE FLOATING TRIGGER WIDGET */}
         <div className="space-y-2 pt-4">
           <label className="text-[11px] font-bold text-cyan-400 uppercase tracking-wider flex items-center justify-between">
-            <span>Floating Button Trigger (ফ্লোটিং বাটন ট্রিগার)</span>
+            <span>Floating Button Trigger</span>
             <span className={`text-[10px] font-mono px-2 py-0.5 rounded-md ${config.enableFloatingButton !== false ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/30' : 'bg-slate-800 text-slate-400'}`}>
               {config.enableFloatingButton !== false ? 'ACTIVE 🎈' : 'DISABLED ⚪'}
             </span>
@@ -1613,7 +1613,7 @@ export default function SleekDialogEditor({
         {/* 2. FLOATING BUTTON POSITION PICKER */}
         <div className="space-y-2 pt-4 border-t border-slate-800/60 mt-4">
           <label className="text-[11px] font-bold text-cyan-400 uppercase tracking-wider">
-            Floating Widget Position (বাটনের পজিশন)
+            Floating Widget Position
           </label>
           <div className="grid grid-cols-2 gap-2">
             {[
@@ -1641,7 +1641,7 @@ export default function SleekDialogEditor({
         {/* 3. FLOATING BUTTON ICON & ANIMATION */}
         <div className="space-y-2 pt-4 border-t border-slate-800/60 mt-4">
           <label className="text-[11px] font-bold text-cyan-400 uppercase tracking-wider">
-            Widget Animation & Icon (অ্যানিমেশন ও আইকন)
+            Widget Animation & Icon
           </label>
           <div className="grid grid-cols-4 gap-2">
             {[
@@ -1693,7 +1693,7 @@ export default function SleekDialogEditor({
         {/* 4. CUSTOM FLOATING BUTTON TEXT */}
         <div className="space-y-1.5 pt-4 border-t border-slate-800/60 mt-4">
           <label className="text-[11px] font-bold text-cyan-400 uppercase tracking-wider">
-            Floating Button Label (বাটন টেক্সট)
+            Floating Button Label
           </label>
           <input
             type="text"
@@ -1719,7 +1719,7 @@ export default function SleekDialogEditor({
                 Text Font & Font Styles Studio
                 <span className="text-[9px] py-0.5 px-1.5 bg-amber-500/20 text-amber-300 font-semibold font-mono rounded-full uppercase">PRO STYLES</span>
               </h3>
-              <p className="text-[10px] text-slate-400 mt-0.5">টাইটেল ও মেসেজের ফন্ট ফ্যামিলি, স্পেসিং ও স্টাইল কাস্টমাইজ করুন</p>
+              <p className="text-[10px] text-slate-400 mt-0.5">Customize title and message font family, spacing, and styling</p>
             </div>
           </div>
         </div>
@@ -1876,7 +1876,7 @@ export default function SleekDialogEditor({
             {/* Title Input */}
             <div className="space-y-1 text-left">
               <label className="text-[11px] font-bold text-slate-300 pl-1 uppercase tracking-wider">
-                Enter Title (টাইটেল)
+                Enter Title
               </label>
               <div className="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 shadow-inner focus-within:border-emerald-500 focus-within:ring-1 focus-within:ring-emerald-500/50 transition-all">
                 <input 
@@ -1892,7 +1892,7 @@ export default function SleekDialogEditor({
             {/* Message Input */}
             <div className="space-y-1 text-left">
               <label className="text-[11px] font-bold text-slate-300 pl-1 uppercase tracking-wider">
-                Enter Message (মেসেজ)
+                Enter Message
               </label>
               <div className="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 shadow-inner focus-within:border-emerald-500 focus-within:ring-1 focus-within:ring-emerald-500/50 transition-all">
                 <input 
@@ -1908,7 +1908,7 @@ export default function SleekDialogEditor({
             {/* Positive Button Input */}
             <div className="space-y-1 text-left">
               <label className="text-[11px] font-bold text-slate-300 pl-1 uppercase tracking-wider">
-                Enter Positive Button Text (পজিটিভ বাটন)
+                Enter Positive Button Text
               </label>
               <div className="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 shadow-inner focus-within:border-emerald-500 focus-within:ring-1 focus-within:ring-emerald-500/50 transition-all">
                 <input 
@@ -1924,7 +1924,7 @@ export default function SleekDialogEditor({
             {/* Negative Button Input */}
             <div className="space-y-1 text-left">
               <label className="text-[11px] font-bold text-slate-300 pl-1 uppercase tracking-wider">
-                Enter Negative Button Text (নেগেটিভ বাটন)
+                Enter Negative Button Text
               </label>
               <div className="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 shadow-inner focus-within:border-emerald-500 focus-within:ring-1 focus-within:ring-emerald-500/50 transition-all">
                 <input 
@@ -1940,7 +1940,7 @@ export default function SleekDialogEditor({
             {/* Download Link Input */}
             <div className="space-y-1 text-left">
               <label className="text-[11px] font-bold text-slate-300 pl-1 uppercase tracking-wider">
-                Enter Positive Button Link / Download URL (ডাউনলোড লিংক)
+                Enter Positive Button Link / Download URL
               </label>
               <div className="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 shadow-inner focus-within:border-emerald-500 focus-within:ring-1 focus-within:ring-emerald-500/50 transition-all">
                 <input 
@@ -1958,7 +1958,7 @@ export default function SleekDialogEditor({
               <div className="flex items-center justify-between mb-0.5">
                 <label className="text-[11px] font-extrabold text-emerald-400 uppercase tracking-wider flex items-center gap-1">
                   <Cloud className="w-3.5 h-3.5 text-emerald-400" />
-                  Pastebin / GitHub Raw Link (পেস্টবিন র' লিংক)
+                  Pastebin / GitHub Raw Link
                 </label>
                 <span className="text-[9px] bg-emerald-500/20 text-emerald-300 font-mono px-1.5 py-0.5 rounded border border-emerald-500/30">
                   Dex Injection Ready
@@ -1974,14 +1974,14 @@ export default function SleekDialogEditor({
                 />
               </div>
               <p className="text-[10px] text-slate-400 pl-1 pt-0.5">
-                💡 <strong>ম্যাজিক ট্রিক:</strong> এই লিংকটি আপনার ডাউনলোড করা ZIP ফাইলের <code>simpledialog.smali</code>-তে অটোমেটিক সেট হয়ে যাবে!
+                💡 <strong>Pro Tip:</strong> This link will be automatically configured in the <code>simpledialog.smali</code> inside your downloaded ZIP file!
               </p>
             </div>
 
             {/* App Version Code */}
             <div className="space-y-1 text-left">
               <label className="text-[11px] font-bold text-slate-300 pl-1 uppercase tracking-wider">
-                Enter Version Code (ভার্সন কোড)
+                Enter Version Code
               </label>
               <div className="w-full bg-slate-900/90 border border-slate-800 rounded-xl px-4 py-2.5 shadow-inner focus-within:border-emerald-500 focus-within:ring-1 focus-within:ring-emerald-500/50 transition-all">
                 <input 
@@ -2116,7 +2116,7 @@ export default function SleekDialogEditor({
                 <div className="font-extrabold text-emerald-400 flex items-center justify-between uppercase tracking-wide border-b border-slate-800/80 pb-1.5">
                   <span className="flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5 text-emerald-400" />
-                    📌 Pastebin Raw Link কোথায় পেস্ট করবেন?
+                    📌 Where to paste the Pastebin Raw Link?
                   </span>
                   <span className="text-[9px] bg-emerald-500/20 px-2 py-0.5 rounded font-mono text-emerald-300 border border-emerald-500/30">
                     MT Manager Guide
@@ -2125,10 +2125,10 @@ export default function SleekDialogEditor({
 
                 <div className="space-y-1.5 text-[11px] text-slate-300">
                   <p className="leading-relaxed">
-                    <strong className="text-amber-300">ধাপ ১ (Pastebin-এ রাখা):</strong> ওপরের <strong className="text-emerald-400">COPY JSON</strong> চেপে <strong className="text-indigo-300">Pastebin.com</strong> এ পোস্ট করুন এবং <strong>Raw</strong> লিংকটি কপি করুন।
+                    <strong className="text-amber-300">Step 1 (Host on Pastebin):</strong> Click <strong className="text-emerald-400">COPY JSON</strong> above, post it on <strong className="text-indigo-300">Pastebin.com</strong>, and copy the <strong>Raw</strong> link.
                   </p>
                   <p className="leading-relaxed">
-                    <strong className="text-emerald-300">ধাপ ২ (Dex এ বসানো):</strong> <strong>MT Manager</strong> দিয়ে আপনার অ্যাপের <code className="text-white bg-slate-900 px-1 py-0.5 rounded">classes.dex</code> ➔ <strong>Dex Editor Plus</strong> ওপেন করে সার্চ করুন:
+                    <strong className="text-emerald-300">Step 2 (Inject into DEX):</strong> In <strong>MT Manager</strong>, open your app's <code className="text-white bg-slate-900 px-1 py-0.5 rounded">classes.dex</code> with <strong>Dex Editor Plus</strong> and search:
                   </p>
                   <div className="bg-black/90 p-2.5 rounded-lg font-mono text-[10px] text-emerald-300 border border-emerald-900/60 select-all space-y-1.5">
                     <div className="text-slate-400"># Search Path: com/nsmods/dialog/simpledialog</div>
@@ -2139,7 +2139,7 @@ export default function SleekDialogEditor({
                     </div>
                   </div>
                   <p className="text-[10px] text-slate-400 italic pt-0.5">
-                    💡 <strong>পরামর্শ:</strong> আপনি ওপরের "Pastebin / GitHub Raw Link" বক্সে আপনার লিংক বসিয়ে দিলে, ডাউনলোড করা ZIP-এর Smali-তে এই লিংকটি অটোমেটিক বসে যাবে!
+                    💡 <strong>Tip:</strong> If you enter your link in the "Pastebin / GitHub Raw Link" box above, it will be automatically injected into your downloaded ZIP's Smali file!
                   </p>
                 </div>
               </div>
@@ -2150,7 +2150,7 @@ export default function SleekDialogEditor({
             {/* Welcome message title */}
             <div className="space-y-1.5 flex flex-col items-start w-full">
               <label className="text-xs font-extrabold text-[#007D54] pl-5 uppercase tracking-wider">
-                Welcome Title (স্বাগতম টাইটেল)
+                Welcome Title
               </label>
               <div className="w-full bg-[#EEF1F6] border border-[#D2D9E3] rounded-full px-6 py-3.5 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] focus-within:border-emerald-500/50 transition-colors">
                 <input 
@@ -2166,7 +2166,7 @@ export default function SleekDialogEditor({
             {/* Welcome message body */}
             <div className="space-y-1.5 flex flex-col items-start w-full">
               <label className="text-xs font-extrabold text-[#007D54] pl-5 uppercase tracking-wider">
-                Welcome Body Message (স্বাগতম বার্তা)
+                Welcome Body Message
               </label>
               <div className="w-full bg-[#EEF1F6] border border-[#D2D9E3] rounded-full px-6 py-3.5 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] focus-within:border-emerald-500/50 transition-colors">
                 <input 
@@ -2182,7 +2182,7 @@ export default function SleekDialogEditor({
             {/* Author Credit Name */}
             <div className="space-y-1.5 flex flex-col items-start w-full">
               <label className="text-xs font-extrabold text-[#007D54] pl-5 uppercase tracking-wider">
-                Author Credit/Name (ডেভেলপার নাম)
+                Author Credit/Name
               </label>
               <div className="w-full bg-[#EEF1F6] border border-[#D2D9E3] rounded-full px-6 py-3.5 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] focus-within:border-emerald-500/50 transition-colors">
                 <input 
@@ -2198,7 +2198,7 @@ export default function SleekDialogEditor({
             {/* Telegram channel link */}
             <div className="space-y-1.5 flex flex-col items-start w-full">
               <label className="text-xs font-extrabold text-[#007D54] pl-5 uppercase tracking-wider">
-                Telegram Link (টেলিগ্রাম চ্যানেল লিংক)
+                Telegram Link
               </label>
               <div className="w-full bg-[#EEF1F6] border border-[#D2D9E3] rounded-full px-6 py-3.5 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] focus-within:border-emerald-500/50 transition-colors">
                 <input 
@@ -2214,7 +2214,7 @@ export default function SleekDialogEditor({
             {/* Join Telegram button text */}
             <div className="space-y-1.5 flex flex-col items-start w-full">
               <label className="text-xs font-extrabold text-[#007D54] pl-5 uppercase tracking-wider">
-                Join Telegram Button Text (বাটন টেক্সট)
+                Join Telegram Button Text
               </label>
               <div className="w-full bg-[#EEF1F6] border border-[#D2D9E3] rounded-full px-6 py-3.5 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] focus-within:border-emerald-500/50 transition-colors">
                 <input 
@@ -2233,7 +2233,7 @@ export default function SleekDialogEditor({
             <div className="w-full space-y-2">
               <span className="text-[11px] font-bold text-slate-600 uppercase tracking-wider pl-2 flex items-center justify-between">
                 <span>Select Quick Message Presets</span>
-                <span className="text-[10px] text-indigo-600 font-semibold">Bengali & English</span>
+                <span className="text-[10px] text-indigo-600 font-semibold">Pro Templates</span>
               </span>
               <div className="grid grid-cols-2 gap-2">
                 {[
@@ -2257,7 +2257,7 @@ export default function SleekDialogEditor({
             {/* SET MESSAGE */}
             <div className="space-y-1.5 flex flex-col items-start w-full">
               <label className="text-xs font-extrabold text-[#007D54] pl-5 uppercase tracking-wider flex items-center justify-between w-full pr-2">
-                <span>SET MESSAGE (ডায়ালগ বার্তা)</span>
+                <span>SET MESSAGE</span>
                 <span className="text-[10px] text-indigo-600 font-normal">NSMods Pro</span>
               </label>
               <div className="w-full bg-[#EEF1F6] border border-[#D2D9E3] rounded-2xl px-5 py-3 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] focus-within:border-emerald-500/50 transition-colors flex items-center gap-2">
@@ -2274,7 +2274,7 @@ export default function SleekDialogEditor({
             {/* SET TELEGRAM BUTTON TEXT */}
             <div className="space-y-1.5 flex flex-col items-start w-full">
               <label className="text-xs font-extrabold text-[#007D54] pl-5 uppercase tracking-wider">
-                SET TELEGRAM BUTTON (পজিটিভ বাটন)
+                SET POSITIVE BUTTON (TELEGRAM)
               </label>
               <div className="w-full bg-[#EEF1F6] border border-[#D2D9E3] rounded-full px-6 py-3.5 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] focus-within:border-emerald-500/50 transition-colors">
                 <input 
@@ -2290,7 +2290,7 @@ export default function SleekDialogEditor({
             {/* SET CANCEL BUTTON TEXT */}
             <div className="space-y-1.5 flex flex-col items-start w-full">
               <label className="text-xs font-extrabold text-[#007D54] pl-5 uppercase tracking-wider">
-                SET CANCEL BUTTON (নেগেটিভ বাটন)
+                SET NEGATIVE BUTTON (CLOSE)
               </label>
               <div className="w-full bg-[#EEF1F6] border border-[#D2D9E3] rounded-full px-6 py-3.5 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] focus-within:border-emerald-500/50 transition-colors">
                 <input 
@@ -2306,7 +2306,7 @@ export default function SleekDialogEditor({
             {/* YOUR TELEGRAM LINK */}
             <div className="space-y-1.5 flex flex-col items-start w-full">
               <label className="text-xs font-extrabold text-[#007D54] pl-5 uppercase tracking-wider">
-                TELEGRAM CHANNEL LINK (লিংক)
+                TELEGRAM CHANNEL LINK
               </label>
               <div className="w-full bg-[#EEF1F6] border border-[#D2D9E3] rounded-full px-6 py-3.5 shadow-[inset_0_2px_4px_rgba(0,0,0,0.03)] focus-within:border-emerald-500/50 transition-colors">
                 <input 
@@ -2504,7 +2504,7 @@ export default function SleekDialogEditor({
                       App Attachment & Integration Guide
                       <span className="text-[9px] py-0.5 px-2 bg-indigo-500/20 text-indigo-300 font-mono rounded-full">FULL TUTORIAL</span>
                     </h3>
-                    <p className="text-[11px] text-slate-400">কীভাবে আপনার অ্যান্ড্রয়েড অ্যাপ বা ওয়েবসাইটে এই ডায়ালগ ও ফ্লোটিং বাটন যুক্ত করবেন</p>
+                    <p className="text-[11px] text-slate-400">How to integrate this dialog and floating button into your Android app or website</p>
                   </div>
                 </div>
                 <button
@@ -2550,13 +2550,13 @@ export default function SleekDialogEditor({
                     <div className="bg-indigo-950/40 border border-indigo-500/30 p-3.5 rounded-2xl space-y-1">
                       <h4 className="font-bold text-indigo-300 flex items-center gap-1.5">
                         <Check className="w-4 h-4 text-emerald-400" />
-                        Sketchware Pro - কীভাবে যুক্ত করবেন (Step-by-Step)
+                        Sketchware Pro - How to Integrate (Step-by-Step)
                       </h4>
                       <ol className="list-decimal list-inside space-y-1 text-[11px] text-slate-300 leading-relaxed pt-1">
-                        <li>Sketchware অ্যাপ ওপেন করে আপনার প্রজেক্টটি খুলুন।</li>
-                        <li><b>OnCreate</b> ইভেন্ট অথবা কোনো বাটনের <b>OnClick</b> ব্লকে যান।</li>
-                        <li><b>Operator</b> ট্যাব থেকে <code>Add Source Directly</code> ব্লকটি ড্র্যাগ করুন।</li>
-                        <li>নিচের কপি করা Java কোডটি ব্লকের ভিতর পেস্ট (Paste) করুন এবং সেভ করুন!</li>
+                        <li>Open the Sketchware app and open your project.</li>
+                        <li>Go to the <b>OnCreate</b> event or any button's <b>OnClick</b> block.</li>
+                        <li>From the <b>Operator</b> tab, drag the <code>Add Source Directly</code> block.</li>
+                        <li>Paste the Java code into the block and save!</li>
                       </ol>
                     </div>
 
@@ -2616,7 +2616,7 @@ findViewById(R.id.btn_open_dialog).setOnClickListener(new View.OnClickListener()
                         Android Studio - System Floating Window Service
                       </h4>
                       <p className="text-[11px] text-slate-300 leading-relaxed">
-                        এই সার্ভিসটি অ্যাপ বা গেম চলাকালীন স্ক্রিনের উপরে একটি ফ্লোটিং বাটন উইজেট প্রদর্শন করে। বাটনে ট্যাপ করলে কাস্টম ডায়ালগ পপ-আপ হবে!
+                        This service displays a floating button widget on top of any game or app screen. Tapping it pops up the customized dialog!
                       </p>
                     </div>
 
@@ -2744,7 +2744,7 @@ public class FloatingWindowService extends Service {
                         HTML / JS / React Floating Button Widget
                       </h4>
                       <p className="text-[11px] text-slate-300 leading-relaxed">
-                        আপনার ওয়েবসাইট বা Android WebView এর <code>index.html</code> ফাইলের ভিতরে এই কাস্টম HTML/JS কোডটি জুড়ে দিন।
+                        Embed this custom HTML/JS snippet directly inside your website or Android WebView's <code>index.html</code> file.
                       </p>
                     </div>
 
@@ -2820,7 +2820,7 @@ function toggleCustomDialog() {
                         Current Dialog Configuration Payload (.JSON)
                       </h4>
                       <p className="text-[11px] text-slate-300 leading-relaxed">
-                        এই JSON অবজেক্টটি Firebase Remote Config, Pastebin বা আপনার সার্ভারে হোস্ট করে সরাসরি ডায়ালগের কন্টেন্ট আপডেট করতে পারবেন।
+                        Host this JSON payload on Firebase Remote Config, Pastebin, or your server to update dialog content dynamically over the air.
                       </p>
                     </div>
 

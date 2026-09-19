@@ -156,29 +156,29 @@ export default function FileExplorer({ config, generatedZipName, onBack, activeT
   if (activeTab === 'online-floating' && floatingConfig) {
     readmeContent = `★★ NSMODS FLOATING MOD WINDOW SYSTEM ★★
 
-আপনার APK-তে ফ্লোটিং উইন্ডো সার্ভিস ইমপ্লিমেন্ট করার নির্দেশাবলী:
+Instructions for implementing the floating window service in your APK:
 
-১. ফ্লোটিং উইন্ডো কেন শো হচ্ছিল না তার সমাধান (MUST READ):
-   - প্রথম কারণ (মেথড বডি খালি থাকা): ব্রাউজার দিয়ে তৈরি classes.dex সরাসরি APK-তে "Dex Merge" করলে ফ্লোটিং উইন্ডো শো করবে না। কারণ ব্রাউজার থেকে সরাসরি অ্যান্ড্রয়েড SDK-এর জটিল উইন্ডো সার্ভিস এবং ওভারলে ফাংশন বাইটকোডে সরাসরি কম্পাইল করা যায় না। তাই classes.dex শুধুমাত্র একটি ডেক্স স্ট্রাকচার হিসেবে কাজ করে।
-   - শতভাগ কার্যকর সমাধান (Smali ফোল্ডার ব্যবহার করা): এই জন্য আমরা জিপ ফাইলে পুনরায় 'smali' ফোল্ডার যুক্ত করেছি! আপনি জিপ ফাইলটি এক্সট্র্যাক্ট করে 'smali' ফোল্ডারের ভেতরে থাকা 'com' ফোল্ডারটি সরাসরি আপনার APK-এর ডি-কম্পাইলড স্মালি ফোল্ডারে পেস্ট করুন। MT Manager নিজেই স্মালি ফাইলগুলোকে রিয়েল ডেক্স কোডে নিখুঁতভাবে কম্পাইল করে নেবে, যার ফলে ফ্লোটিং উইন্ডোটি ১০০% গ্যারান্টি সহকারে শো করবে!
+1. How to solve floating window not showing up (MUST READ):
+   - Browser-generated classes.dex lacks Android SDK complex window overlay service bytecodes directly. Hence, classes.dex serves as the dex structure.
+   - 100% Effective Solution (Use Smali folder): We included the 'smali' folder inside the ZIP file. Extract the ZIP and copy the 'com' folder directly into your APK's decompiled smali directory. MT Manager will compile the smali code into real DEX code cleanly.
 
-২. AndroidManifest.xml এ পারমিশন কেন অত্যন্ত জরুরী:
-   - হ্যাঁ, ফ্লোটিং উইন্ডোর জন্য AndroidManifest.xml ফাইলে পারমিশন এবং সার্ভিস ডিক্লেয়ার করা ১০০% বাধ্যতামূলক (Compulsory)। পারমিশন না দিলে অ্যাপটি রান করার সাথে সাথেই ক্র্যাশ করবে!
-   - আপনার অ্যাপের AndroidManifest.xml ফাইলে <manifest> ট্যাগের ভেতরে নিচের পারমিশনটি যুক্ত করুন:
+2. Permissions required in AndroidManifest.xml:
+   - Floating windows require permission and service declaration in AndroidManifest.xml:
+   - Add this inside <manifest>:
      <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
      
-   - এবং <application> ট্যাগের ভেতরে নিচের সার্ভিসটি যুক্ত করুন:
+   - And add this inside <application>:
      <service android:name="com.nsmods.floating.FloatingService" android:enabled="true" android:exported="false" />
 
-৩. অ্যান্ড্রয়েড ৬.০ (API 23) বা তার উপরের ডিভাইসের ক্ষেত্রে:
-   - ফ্লোটিং উইন্ডো স্ক্রিনে দেখানোর জন্য ব্যবহারকারীকে অবশ্যই ফোন সেটিংস থেকে "Draw over other apps" (অন্যান্য অ্যাপের উপর প্রদর্শন) পারমিশনটি ম্যানুয়ালি অন করতে হবে। এটি অ্যান্ড্রয়েড সিস্টেমের একটি সিকিউরিটি ফিচার।
+3. Android 6.0+ (API 23+) Devices:
+   - Users must grant "Draw over other apps" permission from Phone Settings -> Apps.
 
-৪. Smali এবং assets যুক্ত করার নিয়ম:
-   - ডাউনলোড করা জিপ ফাইলটি এক্সট্র্যাক্ট করুন।
-   - 'smali' ফোল্ডারের ভেতরের 'com' ডিরেক্টরিটি আপনার APK-এর ডি-কম্পাইলড Smali ডিরেক্টরিতে পেস্ট করুন।
-   - 'assets' ফোল্ডারের ভেতরের ফন্ট ফাইলগুলো (.ttf) এবং ইমেজ ফাইলগুলো আপনার APK-এর 'assets' ফোল্ডারে পেস্ট করতে ভুলবেন না!
+4. How to add Smali and Assets:
+   - Extract the downloaded ZIP archive.
+   - Copy 'smali/com' into your decompiled APK smali directory.
+   - Copy fonts (.ttf) and image files from 'assets' into your APK's 'assets' folder.
 
-ধন্যবাদ, NSMods Pro Studio ব্যবহার করার জন্য!`;
+Thank you for using NSMods Pro Studio!`;
   } else {
     readmeContent = `=========================================
   NSMODS DIALOG PRO - MODDING UTILITY READ ME
@@ -700,7 +700,7 @@ Join our Telegram for updates: https://t.me/Sharechat_ns_098
 .super Ljava/lang/Object;
 
 # 🌟 NSMODS ADVANCED PREMIUM CONFIGURATION 🌟
-# Bengali: এই সেকশনে আপনার সিলেক্ট করা সমস্ত প্রিমিয়াম স্টাইল এবং কনফিগারেশন যোগ করা হয়েছে।
+# All selected premium styles and configurations are included in this section.
 # 
 # [CONFIGURATION METADATA]
 # - Title Font: ${finalConfig.titleFont || "sans"} (dialog_title.ttf)
@@ -1358,10 +1358,10 @@ Join our Telegram for updates: https://t.me/Sharechat_ns_098
         <div className="space-y-1">
           <div className="flex items-center gap-2 text-indigo-400">
             <Info className="w-4 h-4 flex-shrink-0" />
-            <span className="text-xs font-bold uppercase tracking-wider font-mono">ডাউনলোড নির্দেশাবলী (Download Notice)</span>
+            <span className="text-xs font-bold uppercase tracking-wider font-mono">Download Notice</span>
           </div>
           <p className="text-xs text-slate-300 leading-relaxed">
-            যদি <strong className="text-white">Download Real ZIP</strong> বাটনে টাচ করার পর আপনার ব্রাউজারে ডাউনলোড শুরু না হয়, তবে আইফ্রেমের সিকিউরিটি পলিসির কারণে হতে পারে। সমাধান পেতে দয়া করে স্ক্রিনের ওপরের ডানদিকের <strong className="text-white">"Open in New Tab" ↗</strong> আইকনে ক্লিক করে নতুন ট্যাবে অ্যাপটি ওপেন করুন অথবা Shared URL ব্যবহার করে ব্রাউজার থেকে সরাসরি ডাউনলোড করুন!
+            If clicking <strong className="text-white">Download Real ZIP</strong> does not trigger a download in your browser, it may be due to iframe sandbox restrictions. To resolve this, click <strong className="text-white">"Open in New Tab" ↗</strong> at the top right to download directly!
           </p>
         </div>
         {downloadStatus === 'success' && (

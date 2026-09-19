@@ -50,15 +50,15 @@ export default function DialogPreviews({ config, variant, floatingConfig }: Dial
     const link = config.positiveBtnLink || "https://t.me/Sharechat_ns_098";
     setToastContent(
       <div className="flex flex-col gap-1 items-center">
-        <span className="font-bold text-emerald-400 text-xs">অ্যাকশন সফল! (Action Successful)</span>
-        <span className="text-[10px] text-slate-300">রিডাইরেক্ট হচ্ছে (Redirecting)...</span>
+        <span className="font-bold text-emerald-400 text-xs">Action Successful!</span>
+        <span className="text-[10px] text-slate-300">Redirecting...</span>
         <a 
           href={link} 
           target="_blank" 
           rel="noopener noreferrer" 
           className="mt-1 px-3 py-1 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-lg transition-colors text-[10px] inline-flex items-center gap-1 active:scale-95"
         >
-          সরাসরি খুলুন (Open Link) <ExternalLink className="w-3 h-3" />
+          Open Link <ExternalLink className="w-3 h-3" />
         </a>
       </div>
     );
@@ -73,7 +73,7 @@ export default function DialogPreviews({ config, variant, floatingConfig }: Dial
     setIsDismissed(true);
     setToastContent(
       <div className="flex flex-col gap-0.5 items-center">
-        <span className="font-bold text-rose-400 text-xs">ডায়ালগ বাতিল করা হয়েছে!</span>
+        <span className="font-bold text-rose-400 text-xs">Dialog Dismissed!</span>
         <span className="text-[9px] text-slate-400">Dismiss function triggered successfully.</span>
       </div>
     );
@@ -100,14 +100,14 @@ export default function DialogPreviews({ config, variant, floatingConfig }: Dial
           <X className="w-8 h-8" />
         </div>
         <div className="space-y-1">
-          <h4 className="text-sm font-bold text-white">ডায়ালগটি বন্ধ করা হয়েছে!</h4>
+          <h4 className="text-sm font-bold text-white">Dialog Dismissed!</h4>
           <p className="text-[11px] text-slate-400">Buttons are working. Close / Cancel triggered dismiss function.</p>
         </div>
         <button
           onClick={() => setIsDismissed(false)}
           className="text-xs bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded-xl cursor-pointer transition-all active:scale-95 shadow-lg shadow-indigo-600/10"
         >
-          রিসেট ডায়ালগ (Reset View)
+          Reset Dialog Preview
         </button>
       </div>
     );
@@ -766,7 +766,7 @@ export default function DialogPreviews({ config, variant, floatingConfig }: Dial
                     >
                       <span className="flex items-center gap-1">
                         <Gamepad2 className="w-2.5 h-2.5 text-indigo-400" />
-                        লুডু গেম ওয়েবসাইট
+                        Game Website
                       </span>
                       <ExternalLink className="w-2 h-2" />
                     </a>
@@ -782,7 +782,7 @@ export default function DialogPreviews({ config, variant, floatingConfig }: Dial
                     >
                       <span className="flex items-center gap-1">
                         <Volume2 className="w-2.5 h-2.5 text-emerald-400" />
-                        ভয়েস চ্যাট রুম
+                        Voice Chat Room
                       </span>
                       <ExternalLink className="w-2 h-2" />
                     </a>
@@ -798,7 +798,7 @@ export default function DialogPreviews({ config, variant, floatingConfig }: Dial
                     >
                       <span className="flex items-center gap-1">
                         <Send className="w-2.5 h-2.5 text-rose-400" />
-                        টেলিগ্রাম চ্যানেল
+                        Telegram Channel
                       </span>
                       <ExternalLink className="w-2 h-2" />
                     </a>

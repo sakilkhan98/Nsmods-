@@ -187,7 +187,7 @@ export default function SmaliCodegen() {
             <h2 className="text-lg font-bold text-white flex items-center gap-1.5">
               Smali Snippet Generator <span className="text-[10px] py-0.5 px-2 bg-emerald-500/20 text-emerald-400 font-mono rounded-full font-semibold uppercase">PRO</span>
             </h2>
-            <p className="text-xs text-slate-400 mt-0.5">Android রিভার্স-ইঞ্জিনিয়ারিং এর জন্য প্রয়োজনীয় রেডি-মেড স্মালি কোড স্নিপেট তৈরি করুন।</p>
+            <p className="text-xs text-slate-400 mt-0.5">Generate ready-to-use Smali code snippets tailored for Android reverse engineering and modding.</p>
           </div>
         </div>
       </div>
@@ -299,7 +299,7 @@ export default function SmaliCodegen() {
                 <div>
                   <span className="font-semibold text-amber-400 block mb-0.5">Register Safety Notice:</span>
                   <p className="text-[10px] text-slate-400 font-light leading-normal">
-                    স্মালি ইনজেক্ট করার সময় লক্ষ্য রাখুন ব্যবহৃত রেজিস্টারগুলো যেন মূল মেথডে ইতিমধ্যে বরাদ্দ করা থাকে। প্রয়োজনে মেথডের শুরুর দিকে <span className="font-mono text-amber-400 bg-slate-950 px-1 rounded">.locals</span> এর মান বাড়িয়ে নিন।
+                    When injecting Smali instructions, verify that registers are allocated within the target method. If needed, increment the <span className="font-mono text-amber-400 bg-slate-950 px-1 rounded">.locals</span> directive at the top of the method.
                   </p>
                 </div>
               </div>
